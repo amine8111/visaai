@@ -201,7 +201,7 @@ const AssessmentPage = () => {
                 <div className="card border border-red-200 bg-red-50">
                   <h3 className="font-semibold mb-3 text-red-700">Issues Found</h3>
                   <ul className="list-disc list-inside text-sm text-red-700 space-y-1">
-                    {result.issues.map((issue, i) => <li key={i}>{issue}</li>}
+                    {result.issues.map((issue, i) => <li key={i}>{issue}</li>)}
                   </ul>
                 </div>
               )}
