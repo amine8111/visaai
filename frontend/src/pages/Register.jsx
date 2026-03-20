@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth } from '../contexts/AuthContext';
+import api from '../services/api';
 
 const Register = () => {
   const { t } = useTranslation();
@@ -30,8 +31,6 @@ const Register = () => {
     setLoading(true);
 
     try {
-      console.log('Registering with:', { email: formData.email, fullName: formData.fullName, phone: formData.phone, role: formData.role });
-      console.log('API baseURL:', api.defaults.baseURL);
       await register({
         email: formData.email,
         password: formData.password,
@@ -41,7 +40,6 @@ const Register = () => {
       });
       navigate('/dashboard');
     } catch (err) {
-      console.error('Registration error:', err);
       setError(err.response?.data?.message || err.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
