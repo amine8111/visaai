@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: geminivisaai
+    env: node
+    region: oregon
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGODB_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        fromService:
+          type: web
+          name: visaai-frontend
+          envVarKey: RENDER_EXTERNAL_URL
+        value: https://gemini-visa-ai.vercel.app
