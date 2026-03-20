@@ -4,7 +4,8 @@ const api = axios.create({
   baseURL: import.meta.env.VITE_API_URL || 'https://geminivisaai-ns2s.onrender.com',
   headers: {
     'Content-Type': 'application/json'
-  }
+  },
+  timeout: 30000
 });
 
 api.interceptors.response.use(

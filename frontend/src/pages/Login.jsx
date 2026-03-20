@@ -20,7 +20,7 @@ const Login = () => {
       const user = await login(formData.email, formData.password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || t('wrongCredentials'));
+      setError(err.response?.data?.message || err.message || t('wrongCredentials'));
     } finally {
       setLoading(false);
     }
