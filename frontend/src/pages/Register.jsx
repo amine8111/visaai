@@ -30,6 +30,8 @@ const Register = () => {
     setLoading(true);
 
     try {
+      console.log('Registering with:', { email: formData.email, fullName: formData.fullName, phone: formData.phone, role: formData.role });
+      console.log('API baseURL:', api.defaults.baseURL);
       await register({
         email: formData.email,
         password: formData.password,
@@ -39,6 +41,7 @@ const Register = () => {
       });
       navigate('/dashboard');
     } catch (err) {
+      console.error('Registration error:', err);
       setError(err.response?.data?.message || err.message || 'Registration failed. Please try again.');
     } finally {
       setLoading(false);
